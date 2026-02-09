@@ -11,6 +11,8 @@ const registerPatient = catchAsync(
             message: "Patient registered successfully.",
             data: result
         })
+
+        
     }
 )
 

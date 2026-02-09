@@ -5,12 +5,7 @@ export const catchAsync = (fn: RequestHandler) => {
         try {
             await fn(req, res, next)
         } catch (e) {
-            console.error(e)
-            res.status(500).json({
-                success: false,
-                message: "Faild",
-                details: e
-            })
+            next(e) // this is calling globalErrorHandler.ts
         }
     }
 }

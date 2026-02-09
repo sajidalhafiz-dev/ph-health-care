@@ -3,6 +3,8 @@ import cors from 'cors'
 import { IndexRoutes } from './routes'
 import { toNodeHandler } from 'better-auth/node'
 import { auth } from './lib/auth'
+import { globalErrorHandler } from './middlewares/globalErrorHandler'
+import { notFount } from './middlewares/notFound'
 
 const app: Application = express()
 
@@ -21,5 +23,8 @@ app.use("/api/v1", IndexRoutes)
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!')
 })
+
+app.use(globalErrorHandler)
+app.use(notFount)
 
 export default app
